@@ -1,0 +1,13 @@
+:root {
+  --pink: #f4b6b6;
+  --rose: #e88f8f;
+  --dark: #1f1c36;
+  --white: #ffffff;
+}
+
+body {
+  margin: 0;
+  font-family: "Segoe UI", sans-serif;
+  background: var(--white);
+  color: var(--dark);
+}
