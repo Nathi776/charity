@@ -33,7 +33,7 @@ export default function Dashboard() {
   };
 
   const getProducts = async () => {
-    const res = await axios.get("http://localhost:8000/products/");
+    const res = await axios.get("https://charity-backend-epoo.onrender.com/products/");
     setProducts(res.data);
   };
 
@@ -41,7 +41,7 @@ export default function Dashboard() {
     if (!confirm("Are you sure you want to delete this product?")) return;
     try {
       const token = localStorage.getItem("token");
-      await axios.delete(`http://localhost:8000/products/${id}`, {
+      await axios.delete(`https://charity-backend-epoo.onrender.com/products/${id}`, {
         headers: token ? { Authorization: `Bearer ${token}` } : undefined
       });
       setProducts(prev => prev.filter(p => p.id !== id));
@@ -72,7 +72,7 @@ export default function Dashboard() {
         data.append("image", form.image);
       }
 
-      await axios.post("http://localhost:8000/products/", data, {
+      await axios.post("https://charity-backend-epoo.onrender.com/products/", data, {
         headers: {
           "Content-Type": "multipart/form-data"
         }
@@ -241,7 +241,7 @@ export default function Dashboard() {
                         <img
                           src={p.image_url.startsWith("http")
                             ? p.image_url
-                            : `http://localhost:8000${p.image_url}`}
+                            : `https://charity-backend-epoo.onrender.com${p.image_url}`}
                           alt={p.name}
                           style={productImage}
                         />

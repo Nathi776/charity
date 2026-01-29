@@ -18,7 +18,7 @@ export default function Page() {
     const fetchProducts = async () => {
       try {
         setLoading(true);
-        const res = await axios.get("http://localhost:8000/products/");
+        const res = await axios.get("https://charity-backend-epoo.onrender.com/products/");
         setProducts(res.data);
       } catch (err) {
         console.error(err);

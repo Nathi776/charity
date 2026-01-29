@@ -17,7 +17,7 @@ export default function AdminLogin() {
     setError("");
 
     try {
-      const res = await axios.post("http://localhost:8000/auth/login", {
+      const res = await axios.post("https://charity-backend-epoo.onrender.com/auth/login", {
         username,
         password
       });

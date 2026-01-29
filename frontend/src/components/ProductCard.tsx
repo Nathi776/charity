@@ -8,7 +8,7 @@ type Product = {
 };
 
 export default function ProductCard({ product }: { product: Product }) {
-    const phone = "0768475771";
+    const phone = "0657272301";
     const message = `Hi, I'm interested in the ${product.name}`;
 
     return (
@@ -22,7 +22,7 @@ export default function ProductCard({ product }: { product: Product }) {
                 <div style={imageContainer}>
                     {product.image_url ? (
                         <img
-                            src={product.image_url.startsWith("http") ? product.image_url : `http://localhost:8000${product.image_url}`}
+                            src={product.image_url.startsWith("http") ? product.image_url : `https://charity-backend-epoo.onrender.com${product.image_url}`}
                             alt={product.name}
                             style={image}
                         />
