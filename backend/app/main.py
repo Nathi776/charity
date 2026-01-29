@@ -1,7 +1,9 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.staticfiles import StaticFiles
+from pathlib import Path
 
-from .routes import products,auth
+from .routes import products, auth
 
 app = FastAPI()
 
@@ -17,6 +19,13 @@ app.add_middleware(
 def home():
     return {"status": "Backend is running"}
 
+# Mount uploads directory for serving static files
+uploads_dir = Path(__file__).parent.parent / "uploads"
+uploads_dir.mkdir(exist_ok=True)
+app.mount("/uploads", StaticFiles(directory=str(uploads_dir)), name="uploads")
+
+app.include_router(products.router)
+app.include_router(auth.router)
 
 products_db = [
     {
@@ -28,6 +37,3 @@ products_db = [
         "description": "Soft floral rose scent for women"
     }
 ]
-
-app.include_router(products.router)
-app.include_router(auth.router)
