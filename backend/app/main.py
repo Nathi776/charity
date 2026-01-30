@@ -5,6 +5,8 @@ from pathlib import Path
 
 from .routes import products, auth
 
+from .create_admin import create_admin
+
 app = FastAPI()
 
 app.add_middleware(
@@ -14,6 +16,10 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+@app.on_event("startup")
+def startup():
+    create_admin()
 
 @app.get("/")
 def home():
